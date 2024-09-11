@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 function SolutionSection() {
@@ -19,9 +20,13 @@ function SolutionSection() {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-3 py-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 py-10">
         <div className="flex flex-col gap-4 py-4 items-center">
-          <img
+          <Image
+            width={200}
+            height={200}
+            quality={80}
+            loading="lazy"
             alt="solution-item-1"
             src="/images/solution-item-1.png"
             className="aspect-square size-[200px] bg-slate-100"
@@ -49,7 +54,11 @@ function SolutionSection() {
           </p>
         </div>
         <div className="flex flex-col gap-4 py-4 items-center">
-          <img
+          <Image
+            width={200}
+            height={200}
+            quality={80}
+            loading="lazy"
             alt="solution-item-3"
             src="/images/solution-item-3.png"
             className="aspect-square size-[200px] bg-slate-100"

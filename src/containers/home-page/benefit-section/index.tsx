@@ -1,9 +1,10 @@
+import Image from "next/image";
 import React from "react";
 
 function BenefitSection() {
   return (
     <div className="container py-6 px-2.5">
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="flex flex-col justify-center gap-6 px-10">
           <p className="text-paragraph-small">Benefit</p>
           <h2 className="text-h2">สัมผัสประสบการณ์ที่ดีที่สุดในการสกรีน</h2>
@@ -17,7 +18,11 @@ function BenefitSection() {
           </p>
         </div>
         <div className="p-6">
-          <img
+          <Image
+            width={1000}
+            height={1000}
+            quality={80}
+            loading="lazy"
             alt="benefit"
             src="/images/benefit.png"
             className="aspect-square w-full bg-slate-100"

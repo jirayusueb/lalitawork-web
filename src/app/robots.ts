@@ -1,4 +1,4 @@
-import app from "@/configs/app";
+import config from "@/configs";
 
 export default function robots() {
   return {
@@ -7,7 +7,7 @@ export default function robots() {
         userAgent: "*",
       },
     ],
-    sitemap: `${app.host}/sitemap.xml`,
-    host: `${app.host}`,
+    sitemap: `${config.app.host}/sitemap.xml`,
+    host: `${config.app.host}`,
   };
 }

@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
-const LINE_HEIGHT = 1.275;
+const LINE_HEIGHT = 1.5;
 const lineHeight = (number: number) => number * LINE_HEIGHT;
 
 const config = {
