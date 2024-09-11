@@ -1,13 +1,10 @@
-import Image from "next/image";
-import React from "react";
-
 function HeroSection() {
   return (
     <div className="container py-6">
       <div className="grid grid-cols-2 gap-6">
         <div className="p-2.5">
           <h1 className="text-h1 text-balance break-words">
-            <div>Litawork</div>
+            <div>Lalitawork</div>
             <div>Digital Screen</div>
             <div>Printing</div>
           </h1>
