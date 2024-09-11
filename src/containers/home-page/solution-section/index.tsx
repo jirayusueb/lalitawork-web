@@ -22,7 +22,8 @@ function SolutionSection() {
       <div className="grid grid-cols-3 py-10">
         <div className="flex flex-col gap-4 py-4 items-center">
           <img
-            src="/images/solution-item-2.png"
+            alt="solution-item-1"
+            src="/images/solution-item-1.png"
             className="aspect-square size-[200px] bg-slate-100"
           />
           <p className="text-label-x-large text-center text-balance max-w-[330px]">
@@ -35,7 +36,8 @@ function SolutionSection() {
         </div>
         <div className="flex flex-col gap-4 py-4 items-center">
           <img
-            src="/images/solution-item-1.png"
+            alt="solution-item-2"
+            src="/images/solution-item-2.png"
             className="aspect-square size-[200px] bg-slate-100"
           />
           <p className="text-label-x-large text-center text-balance max-w-[330px]">
@@ -48,6 +50,7 @@ function SolutionSection() {
         </div>
         <div className="flex flex-col gap-4 py-4 items-center">
           <img
+            alt="solution-item-3"
             src="/images/solution-item-3.png"
             className="aspect-square size-[200px] bg-slate-100"
           />

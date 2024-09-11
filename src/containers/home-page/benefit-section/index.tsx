@@ -18,6 +18,7 @@ function BenefitSection() {
         </div>
         <div className="p-6">
           <img
+            alt="benefit"
             src="/images/benefit.png"
             className="aspect-square w-full bg-slate-100"
           />

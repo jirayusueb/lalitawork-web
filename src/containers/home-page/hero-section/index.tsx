@@ -1,3 +1,6 @@
+import { AsyncImage } from "loadable-image";
+import { Grow } from "transitions-kit";
+
 function HeroSection() {
   return (
     <div className="container py-6">
@@ -18,10 +21,12 @@ function HeroSection() {
         </div>
       </div>
       <div className="p-2.5">
-        <img
+        <AsyncImage
           className="size-full"
           src="/images/hero-banner.png"
           alt="hero-banner"
+          Transition={Grow}
+          loader={<div style={{ background: "#888" }} />}
         />
       </div>
     </div>

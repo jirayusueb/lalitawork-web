@@ -16,12 +16,14 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.30",
+    "loadable-image": "^3.2.6",
     "lucide-react": "^0.435.0",
     "next": "14.2.6",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "transitions-kit": "^1.2.4",
     "zod": "^3.23.8"
   },
   "devDependencies": {
