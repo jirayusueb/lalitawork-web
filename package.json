@@ -12,6 +12,7 @@
     "check": "npx @biomejs/biome check --write"
   },
   "dependencies": {
+    "@directus/sdk": "^17.0.1",
     "@t3-oss/env-nextjs": "^0.11.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
