@@ -29,4 +29,4 @@ const GoogleAnalytics = () => {
   );
 };
 
-export default React.memo(GoogleAnalytics);
+export default GoogleAnalytics;
