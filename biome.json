@@ -24,6 +24,9 @@
   },
   "javascript": {
     "formatter": {
+      "lineWidth": 100,
+      "indentWidth": 2,
+      "indentStyle": "space",
       "arrowParentheses": "always",
       "bracketSameLine": false,
       "bracketSpacing": true,
@@ -38,5 +41,8 @@
     "formatter": {
       "indentStyle": "tab"
     }
+  },
+  "files": {
+    "ignoreUnknown": true
   }
 }
