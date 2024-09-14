@@ -1,4 +1,4 @@
-import ReadingTime from "reading-time";
+import ReadingTime from 'reading-time';
 
 const useReadingTime = () => {
   const getReadingTime = (text: string) => {

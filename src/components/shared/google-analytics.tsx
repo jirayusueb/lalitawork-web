@@ -1,8 +1,16 @@
-import config from "@/configs";
-import Script from "next/script";
-import React from "react";
+import config from '@/configs';
+import { Partytown } from '@builder.io/partytown/react';
+import Script from 'next/script';
+import React from 'react';
 
 const feature = config.features.googleAnalytics;
+
+declare global {
+  interface Window {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    dataLayer: any;
+  }
+}
 
 const GoogleAnalytics = () => {
   if (!feature.isEnabled) {
@@ -13,16 +21,22 @@ const GoogleAnalytics = () => {
 
   return (
     <>
+      <Partytown debug={!config.app.isProduction} forward={['dataLayer.push', 'gtag']} />
       <Script
-        strategy="lazyOnload"
+        strategy="worker"
         src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
+        type="text/partytown"
       />
-      <Script strategy="lazyOnload" id="google-analytics">
+      <Script strategy="worker" id="google-analytics" type="text/partytown">
         {`
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${id}');
+          window.gtag = function gtag() {
+            window.dataLayer.push(arguments);
+          };
+          window.gtag('js', new Date());
+          window.gtag('config', '${id}', {
+            page_path: window.location.pathname,
+          });
         `}
       </Script>
     </>

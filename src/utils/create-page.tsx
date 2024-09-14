@@ -1,19 +1,19 @@
 // biome-disable lint/suspicious/noExplicitAny: <explanation>
 
-import type { Metadata, ResolvingMetadata } from "next";
-import type { AnyZodObject, z } from "zod";
+import type { Metadata, ResolvingMetadata } from 'next';
+import type { AnyZodObject, z } from 'zod';
 
 type InferParams<Params> = Params extends readonly string[]
   ? {
       [K in Params[number]]: string;
     }
   : Params extends AnyZodObject
-  ? z.infer<Params>
-  : unknown;
+    ? z.infer<Params>
+    : unknown;
 
 type LoaderFn<
   Params extends readonly string[] | AnyZodObject,
-  SearchParams extends readonly string[] | AnyZodObject
+  SearchParams extends readonly string[] | AnyZodObject,
 > = (args: {
   params: InferParams<Params>;
   searchParams: InferParams<SearchParams>;
@@ -21,14 +21,12 @@ type LoaderFn<
 }) => Promise<any>;
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-type InferLoaderData<Loader> = Loader extends (args: any) => Promise<infer T>
-  ? T
-  : unknown;
+type InferLoaderData<Loader> = Loader extends (args: any) => Promise<infer T> ? T : unknown;
 
 export interface CreatePageProps<
   Params extends readonly string[] | AnyZodObject,
   SearchParams extends readonly string[] | AnyZodObject,
-  Loader extends LoaderFn<Params, SearchParams> = LoaderFn<Params, SearchParams>
+  Loader extends LoaderFn<Params, SearchParams> = LoaderFn<Params, SearchParams>,
 > {
   component: React.ComponentType<{
     data: InferLoaderData<Loader>;
@@ -44,7 +42,7 @@ export interface CreatePageProps<
           params: InferParams<Params>;
           searchParams: InferParams<SearchParams>;
         },
-        parent: ResolvingMetadata
+        parent: ResolvingMetadata,
       ) => Promise<Metadata>);
   params?: Params;
   searchParams?: SearchParams;
@@ -52,9 +50,9 @@ export interface CreatePageProps<
 
 function parseParams<Schema extends readonly string[] | AnyZodObject>(
   params: Record<string, string>,
-  schema?: Schema
+  schema?: Schema,
 ) {
-  if (schema && "parse" in schema) {
+  if (schema && 'parse' in schema) {
     return schema.parse(params) as InferParams<Schema>;
   }
 
@@ -64,9 +62,9 @@ function parseParams<Schema extends readonly string[] | AnyZodObject>(
 export const createPage = <
   const Params extends readonly string[] | AnyZodObject,
   const SearchParams extends readonly string[] | AnyZodObject,
-  Loader extends LoaderFn<Params, SearchParams> = LoaderFn<Params, SearchParams>
+  Loader extends LoaderFn<Params, SearchParams> = LoaderFn<Params, SearchParams>,
 >(
-  props: CreatePageProps<Params, SearchParams, Loader>
+  props: CreatePageProps<Params, SearchParams, Loader>,
 ) => {
   const {
     params: paramsSchema,
@@ -88,7 +86,7 @@ export const createPage = <
       searchParams,
     };
 
-    if (typeof loader === "function") {
+    if (typeof loader === 'function') {
       const data = await loader(pageProps);
 
       pageProps = {
@@ -100,7 +98,7 @@ export const createPage = <
     return <PageComponent {...pageProps} />;
   }
 
-  if (typeof metadata === "function") {
+  if (typeof metadata === 'function') {
     return {
       Page,
       generateMetadata: async (
@@ -111,10 +109,10 @@ export const createPage = <
           params: InferParams<Params>;
           searchParams: InferParams<SearchParams>;
         },
-        parent: ResolvingMetadata
+        parent: ResolvingMetadata,
       ) => {
         const data =
-          typeof loader === "function"
+          typeof loader === 'function'
             ? await loader({
                 params,
                 searchParams,
@@ -127,7 +125,7 @@ export const createPage = <
             params,
             searchParams,
           },
-          parent
+          parent,
         );
       },
     };

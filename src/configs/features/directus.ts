@@ -1,9 +1,9 @@
-import { env } from "@/env.mjs";
-import type { Feature } from "@/types/feature";
+import { env } from '@/env.mjs';
+import type { Feature } from '@/types/feature';
 
 const url = env.NEXT_PUBLIC_DIRECTUS_URL;
 
-const title = "Directus";
+const title = 'Directus';
 
 const config: Feature<{ url: string }> = (() => {
   if (url) {

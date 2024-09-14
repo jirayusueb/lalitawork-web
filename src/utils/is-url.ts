@@ -21,7 +21,7 @@ const nonLocalhostDomainRE = /^[^\s\.]+\.\S{2,}$/;
  */
 
 export function isUrl(string: string) {
-  if (typeof string !== "string") {
+  if (typeof string !== 'string') {
     return false;
   }
 

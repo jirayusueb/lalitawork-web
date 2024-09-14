@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
 export const env = createEnv({
   client: {
@@ -9,8 +9,7 @@ export const env = createEnv({
   },
   runtimeEnv: {
     NEXT_PUBLIC_APP_HOST: process.env.NEXT_PUBLIC_APP_HOST,
-    NEXT_PUBLIC_GOOGLE_ANALYTICS_PROPERTY_ID:
-      process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_PROPERTY_ID,
+    NEXT_PUBLIC_GOOGLE_ANALYTICS_PROPERTY_ID: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_PROPERTY_ID,
     NEXT_PUBLIC_DIRECTUS_URL: process.env.NEXT_PUBLIC_DIRECTUS_URL,
   },
   skipValidation: !!process.env.CI || !!process.env.SKIP_ENV_VALIDATION,

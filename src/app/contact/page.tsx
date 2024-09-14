@@ -1,11 +1,22 @@
-import React from "react";
+import ContactUsPage from '@/containers/contact-us-page';
+import { createPage } from '@/utils/create-page';
 
-function Page() {
-  return (
-    <div className="container min-h-screen py-10">
-      <h1 className="text-h1">Contact Page</h1>
-    </div>
-  );
+const { Page } = createPage({
+  component: () => {
+    return <ContactUsPage />;
+  },
+});
+
+export const revalidate = 3600; // 1 hour
+
+export async function generateMetadata() {
+  return {
+    title: 'ติดต่อเรา | Lalitawork',
+    description: 'ติดต่อเราเพื่อคำขอรับบริการพิมพ์และสำรวจของที่ต้องการ',
+    alternates: {
+      canonical: '/contact',
+    },
+  };
 }
 
 export default Page;

@@ -1,46 +1,57 @@
 {
-  "name": "lalitawork-web",
-  "version": "0.1.0",
-  "private": true,
-  "engines": {
-    "node": "20"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "check": "npx @biomejs/biome check --write"
-  },
-  "dependencies": {
-    "@directus/sdk": "^17.0.1",
-    "@t3-oss/env-nextjs": "^0.11.1",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "dayjs": "^1.11.13",
-    "eslint-config-next": "15.0.0-rc.0",
-    "framer-motion": "^11.5.4",
-    "loadable-image": "^3.2.6",
-    "lucide-react": "^0.435.0",
-    "next": "15.0.0-rc.0",
-    "react": "19.0.0-rc-94e652d5-20240912",
-    "react-dom": "19.0.0-rc-94e652d5-20240912",
-    "react-markdown": "^9.0.1",
-    "reading-time": "^1.5.0",
-    "remark-gfm": "^4.0.0",
-    "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7",
-    "transitions-kit": "^1.2.4",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^20.16.5",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18.3.0",
-    "postcss": "^8.4.45",
-    "tailwindcss": "^3.4.11",
-    "typescript": "^5.6.2"
-  },
-  "packageManager": "pnpm@9.5.0"
+	"name": "lalitawork-web",
+	"version": "0.1.0",
+	"private": true,
+	"engines": {
+		"node": "20"
+	},
+	"scripts": {
+		"dev": "next dev",
+		"start": "next start",
+		"build": "export NEXT_BUILD=true && npm run partytown && next build",
+		"partytown": "partytown copylib public/~partytown",
+		"format-and-lint": "biome check",
+		"format-and-lint:fix": "biome check --write",
+		"format-and-lint:staged": "biome check --staged --write"
+	},
+	"dependencies": {
+		"@builder.io/partytown": "^0.10.2",
+		"@directus/sdk": "^17.0.1",
+		"@hookform/resolvers": "^3.9.0",
+		"@radix-ui/react-label": "^2.1.0",
+		"@radix-ui/react-slot": "^1.1.0",
+		"@t3-oss/env-nextjs": "^0.11.1",
+		"@tanstack/react-query": "^5.56.2",
+		"babel-plugin-react-compiler": "^0.0.0-experimental-6067d4e-20240919",
+		"class-variance-authority": "^0.7.0",
+		"clsx": "^2.1.1",
+		"dayjs": "^1.11.13",
+		"eslint-config-next": "15.0.0-rc.0",
+		"framer-motion": "^11.5.4",
+		"loadable-image": "^3.2.6",
+		"lucide-react": "^0.435.0",
+		"next": "^15.0.0-rc.0",
+		"next-safe-action": "^7.9.3",
+		"react": "^19.0.0-rc-206df66e-20240912",
+		"react-dom": "^19.0.0-rc-206df66e-20240912",
+		"react-hook-form": "^7.53.0",
+		"react-markdown": "^9.0.1",
+		"reading-time": "^1.5.0",
+		"remark-gfm": "^4.0.0",
+		"sonner": "^1.5.0",
+		"tailwind-merge": "^2.5.2",
+		"tailwindcss-animate": "^1.0.7",
+		"transitions-kit": "^1.2.4",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@tailwindcss/typography": "^0.5.15",
+		"@types/node": "^20.16.5",
+		"@types/react": "^18.3.5",
+		"@types/react-dom": "^18.3.0",
+		"postcss": "^8.4.45",
+		"tailwindcss": "^3.4.11",
+		"typescript": "^5.6.2"
+	}
 }

@@ -1,12 +1,12 @@
-import { notFound } from "next/navigation";
-import { z } from "zod";
-import { createPage } from "@/utils/create-page";
 import directus from "@/lib/directus";
-import { readItem } from "@directus/sdk";
+import { createPage } from "@/utils/create-page";
+import { readItems } from "@directus/sdk";
+import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { z } from "zod";
 
-const { Page, metadata } = createPage({
+const { Page } = createPage({
   component: ({ data }) => (
     <div className="min-h-screen flex flex-col gap-6">
       <div className="flex justify-center items-center min-h-[25vh] border-b py-10">
@@ -23,22 +23,49 @@ const { Page, metadata } = createPage({
     </div>
   ),
   loader: async ({ params }) => {
-    const response = await directus?.request(readItem("blog", params.slug));
+    const response = await directus?.request(
+      readItems("post", {
+        filter: {
+          slug: params.slug,
+        },
+      })
+    );
 
-    if (!response) {
+    if (!response?.length) {
       notFound();
     }
 
-    return response;
+    return response[0];
   },
-  metadata: async ({ data }) => ({
-    title: data.title,
-    description: data.description,
-  }),
   params: z.object({
     slug: z.string(),
   }),
 });
 
-export { metadata };
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const response = await directus?.request(
+    readItems("post", {
+      filter: {
+        slug: params.slug,
+      },
+    })
+  );
+
+  if (!response?.length) return;
+
+  return {
+    title: response[0]?.title,
+    description: response[0]?.description,
+    keywords: response[0]?.keywords,
+    alternates: {
+      canonical: `/blog/${response[0]?.slug}`,
+    },
+  };
+}
+
+export const revalidate = 3600; // 1 hour
 export default Page;

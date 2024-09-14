@@ -7,7 +7,7 @@ import { readItems } from "@directus/sdk";
 import Image from "next/image";
 import Link from "next/link";
 
-const { Page, metadata } = createPage({
+const { Page } = createPage({
   component: ({ data = [] }) => {
     const { getImage } = useDirectusImage();
     const { formatDate } = useDateFormat();
@@ -24,7 +24,7 @@ const { Page, metadata } = createPage({
           </div>
         </div>
         <div className="container py-10">
-          <ul>
+          <div className="flex flex-col gap-6">
             {data.map((post) => {
               return (
                 <Link
@@ -35,15 +35,15 @@ const { Page, metadata } = createPage({
                   <div className="aspect-[16/9] border rounded-lg overflow-hidden">
                     <Image
                       loading="lazy"
-                      className="size-full bg-muted group-hover:scale-105 transition-all duration-300"
+                      className="size-full object-contain bg-muted rounded-lg group-hover:scale-105 transition-all duration-300"
                       src={getImage(post.thumbnail, {
-                        width: 400,
-                        height: 300,
+                        width: 1000,
+                        height: 563,
                         format: "webp",
                       })}
                       alt={post.title}
-                      width={400}
-                      height={300}
+                      width={1000}
+                      height={563}
                     />
                   </div>
                   <div className="flex flex-col justify-center gap-2">
@@ -62,25 +62,37 @@ const { Page, metadata } = createPage({
                 </Link>
               );
             })}
-          </ul>
+          </div>
         </div>
       </div>
     );
   },
   loader: async () => {
     const response = await directus?.request(
-      readItems("blog", {
-        limit: 10,
+      readItems("post", {
+        limit: 20,
+        filter: {
+          status: "published",
+        },
+        sort: ["-date_created"],
       })
     );
 
     return response;
   },
-  metadata: async ({ data }) => ({
-    title: "Blog",
-    description: "Blog",
-  }),
 });
 
-export { metadata };
+export const revalidate = 3600; // 1 hour
+
+export async function generateMetadata() {
+  return {
+    title: "บทความและความคิด",
+    description:
+      "แบ่งปันมุมมองและประสบการณ์ผ่านบทความที่หวังว่าจะช่วยเสริมสร้างความเข้าใจและเปิดโลกทัศน์ใหม่ๆ",
+    alternates: {
+      canonical: "/blog",
+    },
+  };
+}
+
 export default Page;

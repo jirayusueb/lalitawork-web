@@ -2,7 +2,7 @@ Commit message:
   - Use pattern [type](optional scope): [subject]
   - Use lowercase
 
-Types
+Types:
   - build - Build related changes
   - ci - CI related changes
   - chore - Build process or auxiliary tool changes

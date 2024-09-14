@@ -1,9 +1,9 @@
-import { env } from "@/env.mjs";
-import type { Feature } from "@/types/feature";
+import { env } from '@/env.mjs';
+import type { Feature } from '@/types/feature';
 
 const propertyId = env.NEXT_PUBLIC_GOOGLE_ANALYTICS_PROPERTY_ID;
 
-const title = "Google analytics";
+const title = 'Google analytics';
 
 const config: Feature<{ propertyId: string }> = (() => {
   if (propertyId) {
