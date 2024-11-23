@@ -1,18 +1,16 @@
-import ContactUsPage from '@/containers/contact-us-page';
+import { ContactUsPage } from '@/containers/contact-us/components/contact-us-page';
 import { createPage } from '@/utils/create-page';
 
 const { Page } = createPage({
-  component: () => {
-    return <ContactUsPage />;
-  },
+  component: () => <ContactUsPage />,
 });
 
 export const revalidate = 3600; // 1 hour
 
 export async function generateMetadata() {
   return {
-    title: 'ติดต่อเรา | Lalitawork',
-    description: 'ติดต่อเราเพื่อคำขอรับบริการพิมพ์และสำรวจของที่ต้องการ',
+    title: 'ติดต่อเรา',
+    description: 'หากคุณมีคำถามหรือต้องการข้อมูลเพิ่มเติม โปรดติดต่อเราผ่านแบบฟอร์มด้านล่าง',
     alternates: {
       canonical: '/contact',
     },

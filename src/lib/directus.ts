@@ -1,8 +1,6 @@
 import config from "@/configs";
 import { type RestConfig, createDirectus, rest } from "@directus/sdk";
 
-const feature = config.features.directus;
-
 const isBuild = process.env.NEXT_BUILD === "true";
 
 const restConfig: Partial<RestConfig> = {
@@ -16,8 +14,7 @@ const restConfig: Partial<RestConfig> = {
   }),
 };
 
-const directus = feature.isEnabled
-  ? createDirectus(feature.url).with(rest(restConfig))
-  : null;
+// biome-ignore lint/style/noNonNullAssertion: <explanation>
+const directus = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest(restConfig))
 
 export default directus;
