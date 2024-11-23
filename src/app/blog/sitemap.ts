@@ -1,17 +1,17 @@
-import type { MetadataRoute } from "next";
-import directus from "@/lib/directus";
-import { readItems } from "@directus/sdk";
-import config from "@/configs";
+import config from '@/configs';
+import directus from '@/lib/directus';
+import { readItems } from '@directus/sdk';
+import type { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await directus?.request(
-    readItems("post", {
-      fields: ["slug", "date_updated"],
+    readItems('post', {
+      fields: ['slug', 'date_updated'],
       filter: {
-        status: "published",
+        status: 'published',
       },
-      sort: ["-date_created"],
-    })
+      sort: ['-date_created'],
+    }),
   );
 
   if (!posts) return [];

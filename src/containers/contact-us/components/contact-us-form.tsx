@@ -5,7 +5,7 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/comp
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useCreateContactUs } from '@/containers/contact-us/api/use-create-contact-us';
-import { contactUsFormSchema, type ContactUsForm } from '@/containers/contact-us/schema/contact-us';
+import { type ContactUsForm, contactUsFormSchema } from '@/containers/contact-us/schema/contact-us';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';

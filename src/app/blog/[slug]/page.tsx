@@ -1,10 +1,10 @@
-import directus from "@/lib/directus";
-import { createPage } from "@/utils/create-page";
-import { readItems } from "@directus/sdk";
-import { notFound } from "next/navigation";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { z } from "zod";
+import directus from '@/lib/directus';
+import { createPage } from '@/utils/create-page';
+import { readItems } from '@directus/sdk';
+import { notFound } from 'next/navigation';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { z } from 'zod';
 
 const { Page } = createPage({
   component: ({ data }) => (
@@ -24,11 +24,11 @@ const { Page } = createPage({
   ),
   loader: async ({ params }) => {
     const response = await directus?.request(
-      readItems("post", {
+      readItems('post', {
         filter: {
           slug: params.slug,
         },
-      })
+      }),
     );
 
     if (!response?.length) {
@@ -48,11 +48,11 @@ export async function generateMetadata({
   params: { slug: string };
 }) {
   const response = await directus?.request(
-    readItems("post", {
+    readItems('post', {
       filter: {
         slug: params.slug,
       },
-    })
+    }),
   );
 
   if (!response?.length) return;

@@ -1,11 +1,11 @@
-import useDateFormat from "@/hooks/use-date-format";
-import useDirectusImage from "@/hooks/use-directus-image";
-import useReadingTime from "@/hooks/use-reading-time";
-import directus from "@/lib/directus";
-import { createPage } from "@/utils/create-page";
-import { readItems } from "@directus/sdk";
-import Image from "next/image";
-import Link from "next/link";
+import useDateFormat from '@/hooks/use-date-format';
+import useDirectusImage from '@/hooks/use-directus-image';
+import useReadingTime from '@/hooks/use-reading-time';
+import directus from '@/lib/directus';
+import { createPage } from '@/utils/create-page';
+import { readItems } from '@directus/sdk';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const { Page } = createPage({
   component: ({ data = [] }) => {
@@ -18,9 +18,7 @@ const { Page } = createPage({
         <div className="flex justify-center items-center h-[25vh] border-b">
           <div className="flex flex-col gap-2 text-center max-w-lg">
             <h1 className="text-h1">บทความและความคิด</h1>
-            <p>
-              แบ่งปันมุมมองและประสบการณ์ผ่านบทความที่หวังว่าจะช่วยเสริมสร้างความเข้าใจและเปิดโลกทัศน์ใหม่ๆ
-            </p>
+            <p>แบ่งปันมุมมองและประสบการณ์ผ่านบทความที่หวังว่าจะช่วยเสริมสร้างความเข้าใจและเปิดโลกทัศน์ใหม่ๆ</p>
           </div>
         </div>
         <div className="container py-10">
@@ -39,7 +37,7 @@ const { Page } = createPage({
                       src={getImage(post.thumbnail, {
                         width: 1000,
                         height: 563,
-                        format: "webp",
+                        format: 'webp',
                       })}
                       alt={post.title}
                       width={1000}
@@ -69,13 +67,13 @@ const { Page } = createPage({
   },
   loader: async () => {
     const response = await directus?.request(
-      readItems("post", {
+      readItems('post', {
         limit: 20,
         filter: {
-          status: "published",
+          status: 'published',
         },
-        sort: ["-date_created"],
-      })
+        sort: ['-date_created'],
+      }),
     );
 
     return response;
@@ -86,11 +84,10 @@ export const revalidate = 3600; // 1 hour
 
 export async function generateMetadata() {
   return {
-    title: "บทความและความคิด",
-    description:
-      "แบ่งปันมุมมองและประสบการณ์ผ่านบทความที่หวังว่าจะช่วยเสริมสร้างความเข้าใจและเปิดโลกทัศน์ใหม่ๆ",
+    title: 'บทความและความคิด',
+    description: 'แบ่งปันมุมมองและประสบการณ์ผ่านบทความที่หวังว่าจะช่วยเสริมสร้างความเข้าใจและเปิดโลกทัศน์ใหม่ๆ',
     alternates: {
-      canonical: "/blog",
+      canonical: '/blog',
     },
   };
 }

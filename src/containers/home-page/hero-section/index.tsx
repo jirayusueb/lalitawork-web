@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 
 const HeroImageScetion = dynamic(
-  () => import('@/containers/home-page/hero-section/hero-image-scetion')
+  () => import('@/containers/home-page/hero-section/hero-image-scetion'),
 );
 
 function HeroSection() {

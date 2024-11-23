@@ -1,6 +1,6 @@
 import HomePage from '@/containers/home-page';
-import type { Metadata } from 'next';
 import { createPage } from '@/utils/create-page';
+import type { Metadata } from 'next';
 
 export const revalidate = 3600; // 1 hour
 

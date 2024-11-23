@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import WebVitals from '@/app/web-vitals';
 import GoogleAnalytics from '@/components/shared/google-analytics';
+import ReactQueryProvider from '@/components/shared/react-query-provider';
 import config from '@/configs';
 import { cn } from '@/lib/utils';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { IBM_Plex_Sans_Thai as FontSans } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Toaster } from 'sonner';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import ReactQueryProvider from '@/components/shared/react-query-provider';
 
 const fontSans = FontSans({
   subsets: ['thai'],
