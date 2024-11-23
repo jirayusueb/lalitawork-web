@@ -1,9 +1,9 @@
 import directus from '@/lib/directus';
 import { readItems } from '@directus/sdk';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import type { Metadata } from 'next';
 
 type Params = Promise<{ slug: string }>;
 
